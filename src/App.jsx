@@ -27,32 +27,33 @@ function App() {
   }, [includeNumbers, includeSpecialChar, length]);
 
   const handleCopying = () => {
-    // console.log("copied");
     window.navigator.clipboard.writeText(password);
     textInputRef.current.select();
   };
 
   return (
     <>
-      <div className="h-screen w-full bg-black py-11">
-        <div className="p-12 w-1/2 bg-indigo-950 mx-auto rounded-3xl">
-          <input
-            type="search"
-            id="default-search"
-            className="w-3/4 p-2 text-sm text-gray-900 border border-gray-300 rounded-s-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 "
-            value={password}
-            ref={textInputRef}
-            readOnly
-          />
-          <button
-            type="button"
-            className=" text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-e-lg text-sm px-4 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 "
-            onClick={handleCopying}
-          >
-            Copy
-          </button>
+      <div className="w-full bg-black py-11">
+        <div className="p-12 w-screen lg:w-1/2 bg-indigo-950 lg:mx-auto rounded-3xl flex flex-col">
+          <div className="w-full ">
+            <input
+              type="search"
+              id="default-search"
+              className="w-3/4 p-2 text-sm text-gray-900 border border-gray-300 rounded-s-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 "
+              value={password}
+              ref={textInputRef}
+              readOnly
+            />
+            <button
+              type="button"
+              className=" text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-e-lg text-sm px-4 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+              onClick={handleCopying}
+            >
+              Copy
+            </button>
+          </div>
 
-          <div className="flex mt-2">
+          <div className="flex flex-wrap mt-2 ">
             <input
               type="range"
               name="length"
@@ -65,30 +66,32 @@ function App() {
             <label htmlFor="lenth" className="text-white ms-2">
               Length: {length}
             </label>
-            <input
-              type="checkbox"
-              name="number"
-              id="numberCheckbox"
-              className="ms-3"
-              onClick={() => {
-                setIncludeNumbers((prev) => !prev);
-              }}
-            />
-            <label htmlFor="numberCheckbox" className="text-white ms-2">
-              Number
-            </label>
-            <input
-              type="checkbox"
-              name="character"
-              id="characterCheckbox"
-              className="ms-3"
-              onClick={() => {
-                setIncludeSpecialChar((prev) => !prev);
-              }}
-            />
-            <label htmlFor="characterCheckbox" className="text-white ms-2">
-              Characters
-            </label>
+            <div className="lg:mt-0 md:mt-0 mt-3">
+              <input
+                type="checkbox"
+                name="number"
+                id="numberCheckbox"
+                className="ms-3"
+                onClick={() => {
+                  setIncludeNumbers((prev) => !prev);
+                }}
+              />
+              <label htmlFor="numberCheckbox" className="text-white ms-2">
+                Number
+              </label>
+              <input
+                type="checkbox"
+                name="character"
+                id="characterCheckbox"
+                className="ms-3"
+                onClick={() => {
+                  setIncludeSpecialChar((prev) => !prev);
+                }}
+              />
+              <label htmlFor="characterCheckbox" className="text-white ms-2">
+                Characters
+              </label>
+            </div>
           </div>
         </div>
       </div>
